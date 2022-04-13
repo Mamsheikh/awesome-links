@@ -32,6 +32,10 @@ type LinkEdge {
   node: Link
 }
 
+type Mutation {
+  login(email: String!, image: String!): User
+}
+
 """
 PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
 """
@@ -71,6 +75,7 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
   ): LinkConnection
+  me: User
 }
 
 enum Role {

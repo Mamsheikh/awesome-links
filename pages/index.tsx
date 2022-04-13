@@ -39,10 +39,10 @@ function Home() {
     <div>
       <Head>
         <title>Awesome Links</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className="container mx-auto max-w-5xl my-20 px-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className='container mx-auto max-w-5xl my-20 px-5'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
           {data?.links.edges.map(({ node }, i) => (
             <Link href={`/link/${node.id}`} key={i}>
               <a>
@@ -60,7 +60,7 @@ function Home() {
         </div>
         {hasNextPage ? (
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded my-10"
+            className='px-4 py-2 bg-blue-500 text-white rounded my-10'
             onClick={() => {
               fetchMore({
                 variables: { after: endCursor },
@@ -70,7 +70,7 @@ function Home() {
             more
           </button>
         ) : (
-          <p className="my-10 text-center font-medium">
+          <p className='my-10 text-center font-medium'>
             You've reached the end!
           </p>
         )}
