@@ -58,6 +58,8 @@ export const userMutations = extendType({
             res: ctx.res,
             maxAge: 60 * 60 * 24,
             path: '/',
+            sameSite: true,
+            secure: true,
           });
           return user;
         } catch (error) {
