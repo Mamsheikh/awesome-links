@@ -17,25 +17,26 @@ export const Link = objectType({
 export const LinksQuery = extendType({
   type: 'Query',
   definition(t) {
-    t.connectionField('links', {
+    t.list.field('links', {
       type: Link,
-      resolve: async (_, { after, first }, ctx) => {
-        const offset = after ? cursorToOffset(after) + 1 : 0;
-        if (isNaN(offset)) throw new Error('cursor is invalid');
+      resolve: async (_, _args, ctx) => {
+        // const offset = after ? cursorToOffset(after) + 1 : 0;
+        // if (isNaN(offset)) throw new Error('cursor is invalid');
 
-        const [totalCount, items] = await Promise.all([
-          ctx.prisma.link.count(),
-          ctx.prisma.link.findMany({
-            take: first,
-            skip: offset,
-          }),
-        ]);
+        // const [totalCount, items] = await Promise.all([
+        //   ctx.prisma.link.count(),
+        //   ctx.prisma.link.findMany({
+        //     take: first,
+        //     skip: offset,
+        //   }),
+        // ]);
 
-        return connectionFromArraySlice(
-          items,
-          { first, after },
-          { sliceStart: offset, arrayLength: totalCount }
-        );
+        // return connectionFromArraySlice(
+        //   items,
+        //   { first, after },
+        //   { sliceStart: offset, arrayLength: totalCount }
+        // );
+        return ctx.prisma.link.findMany({});
       },
     });
   },
