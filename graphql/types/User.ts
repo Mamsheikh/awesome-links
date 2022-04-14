@@ -60,6 +60,8 @@ export const userMutations = extendType({
             path: '/',
             sameSite: true,
             secure: true,
+            httpOnly: true,
+            domain: 'awesome-links-nine.vercel.app',
           });
           return user;
         } catch (error) {
